@@ -2,7 +2,7 @@
 
 <template>
   <div class="app-container">
-    <el-menu class="app-menu text-lg font-normal gap-3" mode="horizontal" :ellipsis="false">
+    <el-menu class="app-menu text-xl font-normal gap-3" mode="horizontal" :ellipsis="false">
       <div class="grow" />
       <div>首页</div>
       <div>景点</div>
@@ -18,6 +18,7 @@
 <style>
 body {
   background-size: cover;
+  background: #ddf3ff;
   background: url("/mesh.png") no-repeat fixed;
 
   font-weight: lighter;
@@ -27,7 +28,7 @@ body {
 }
 .app-menu {
   height: 60px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(5px);
 
   align-items: end;
