@@ -12,6 +12,7 @@ declare module 'vue' {
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
     ElInput: typeof import('element-plus/es')['ElInput']
     RecommendScenicSpot: typeof import('./src/components/home/RecommendScenicSpot.vue')['default']
+    RecommendTravelNote: typeof import('./src/components/home/RecommendTravelNote.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SvgIcon: typeof import('./src/components/svgIcon/index.vue')['default']

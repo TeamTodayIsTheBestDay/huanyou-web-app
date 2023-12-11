@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { Search } from "@element-plus/icons-vue"
 import { onMounted, ref } from "vue"
-import { GetScenicSpot } from "@/services/api.ts"
-import ScenicSpotSvg from "@/assets/icons/ScenicSpot.svg"
+import { GetHomeRecommendScenicSpot, GetHomeRecommendTravelNotes } from "@/services/api.ts"
 
 import HomeRecommend = Application.HomeRecommend
+import RecommendTravelNote from "@/components/home/RecommendTravelNote.vue"
 
 const homeRecommendScenicSpot = ref<HomeRecommend.ScenicSpot[]>([])
+const homeRecommendTravelNotes = ref<HomeRecommend.TravelNote[]>([])
 onMounted(async () => {
-  homeRecommendScenicSpot.value = await GetScenicSpot()
+  homeRecommendScenicSpot.value = await GetHomeRecommendScenicSpot()
+  homeRecommendTravelNotes.value = await GetHomeRecommendTravelNotes()
 })
 </script>
 
@@ -35,7 +37,9 @@ onMounted(async () => {
       <category-button title="旅行攻略" icon="TravelGuide" />
       <category-button title="个人中心" icon="PersonalCenter" />
     </div>
-    <div class="h-[20em] flex flex-col justify-center items-center">下面是精选旅行记录</div>
+    <div class="mt-4 mx-3 notes-area">
+      <recommend-travel-note v-for="(d, i) in homeRecommendTravelNotes" :key="i" :note="d" type="note" />
+    </div>
   </div>
 </template>
 
@@ -50,5 +54,10 @@ onMounted(async () => {
 }
 .button-card {
   @apply mt-4 mx-3 grid grid-cols-4 bg-white rounded-lg;
+}
+.notes-area {
+  @apply grid justify-center;
+  column-gap: 10px;
+  grid-template-columns: repeat(2, minmax(140px, 1fr));
 }
 </style>

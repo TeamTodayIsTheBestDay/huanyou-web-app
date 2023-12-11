@@ -10,5 +10,13 @@ declare namespace Application {
       imageUrl: string
       description: string
     }
+
+    export interface TravelNote {
+      coverUrl: string
+      title: string
+      description: string
+      likes: number
+      favorites: number
+    }
   }
 }
