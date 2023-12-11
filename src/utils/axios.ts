@@ -107,11 +107,11 @@ export async function doAxiosAsync(
  @param result 在这里调用axios的函数
  @param operation 操作名称
  */
-export async function doAxiosAsyncFull(result: Promise<AxiosResponse<Return>>, operation: string): Promise<unknown> {
+export async function doAxiosAsyncFull<T>(result: Promise<AxiosResponse<Return>>, operation: string): Promise<T> {
   try {
     const res = await result
     if (res.data.code && res.data.code === 10000) {
-      return res.data.data
+      return res.data.data as T
     } else {
       if (res.data.code) {
         ElMessage.warning(`${operation}失败：${res.data.msg}`)
